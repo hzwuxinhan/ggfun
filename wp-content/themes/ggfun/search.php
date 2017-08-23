@@ -8,9 +8,9 @@
 			<?php 
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				$args = array(
-				    'showposts' => 4,
+				    'showposts' => 40,
 				    'caller_get_posts' => 1,
-				    'paged' => $paged
+					'paged' => $paged
 				);
 				query_posts($args);
 			?>

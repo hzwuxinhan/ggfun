@@ -6,7 +6,8 @@
 
 		</div>
 
-		<?php /*
+		<?php
+		 /*
 		<header class="archive-header"> 
 			<h1>
 				<a href="<?php echo get_category_link( get_cat_ID( single_cat_title('',false) ) ); ?>"><?php single_cat_title() ?></a>

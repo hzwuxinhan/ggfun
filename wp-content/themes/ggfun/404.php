@@ -10,7 +10,7 @@
 		$args = array(
 		    'order'   => DESC,
 		    'caller_get_posts' => 1,
-		    'posts_per_page' => 8
+		    'posts_per_page' => 40
 		);
    		query_posts($args);
 	?>

@@ -785,7 +785,8 @@ a:focus {
     clear: both;
 }
 .footer a {
-    color: #aaa;
+	color: #aaa;
+	margin-right:50px;
 }
 .footer a:hover {
     color: #ddd;

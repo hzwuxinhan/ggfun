@@ -272,19 +272,32 @@ function deel_keywords() {
   global $s, $post;
   $keywords = '';
   if ( is_single() ) {
-	if ( get_the_tags( $post->ID ) ) {
-	  foreach ( get_the_tags( $post->ID ) as $tag ) $keywords .= $tag->name . ', ';
-	}
-	foreach ( get_the_category( $post->ID ) as $category ) $keywords .= $category->cat_name . ', ';
-	$keywords = substr_replace( $keywords , '' , -2);
-  } elseif ( is_home () )    { $keywords = dopt('d_keywords');
-  } elseif ( is_tag() )      { $keywords = single_tag_title('', false);
-  } elseif ( is_category() ) { $keywords = single_cat_title('', false);
-  } elseif ( is_search() )   { $keywords = esc_html( $s, 1 );
+		$keywords = get_post_meta($post->ID, "keywords_value", true);
+		if($keywords == '') {
+			if ( get_the_tags( $post->ID ) ) {
+				foreach ( get_the_tags( $post->ID ) as $tag ) $keywords .= $tag->name . ', ';
+			}
+			foreach ( get_the_category( $post->ID ) as $category ) $keywords .= $category->cat_name . ', ';
+			$keywords = substr_replace( $keywords , '' , -2);
+		}
+  } elseif ( is_home () )    {
+		 $keywords = dopt('d_keywords');
+  } elseif ( is_tag() )      {
+			$tagid = get_current_tag_id();
+			$term_meta = get_option( "ludou_taxonomy_$tagid" );
+			$keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : '';
+		//  $keywords = single_tag_title('', false);
+  } elseif ( is_category() ) {
+			$category_info = get_the_category();
+			$category_id = $category_info[0]->cat_ID;
+			$term_meta = get_option( "ludou_taxonomy_$category_id" );
+			$keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : '';
+  } elseif ( is_search() )   {
+		 $keywords = esc_html( $s, 1 );
   } else { $keywords = trim( wp_title('', false) );
   }
   if ( $keywords ) {
-	echo "<meta name=\"keywords\" content=\"$keywords\">\n";
+		echo "<meta name=\"keywords\" content=\"$keywords\">\n";
   }
 }
 
@@ -535,4 +548,127 @@ function save_postdata( $post_id ) {
         elseif($data == "")
             delete_post_meta($post_id, $meta_box['name'].'_value', get_post_meta($post_id, $meta_box['name'].'_value', true));
     }
+}
+
+function custom_posts_per_page($query){
+	echo is_category();
+	if(is_search() || is_404() || is_category() || is_tag()){
+			$query->set('posts_per_page',40);//搜索页显示所有匹配的文章，不分页
+	}
+}
+
+//this adds the function above to the 'pre_get_posts' action    
+add_action('pre_get_posts','custom_posts_per_page');
+
+class Add_Key_words{
+ 
+    function __construct(){
+        
+        // 分类
+				add_action( 'category_add_form_fields', array( $this, 'add_tax_image_field' ) );
+				add_action( 'category_edit_form_fields', array( $this, 'edit_tax_image_field' ) );
+				add_action( 'edited_category', array( $this, 'save_tax_meta' ), 10, 2 );
+				add_action( 'create_category', array( $this, 'save_tax_meta' ), 10, 2 );
+
+
+				// 标签
+				add_action( 'post_tag_add_form_fields', array( $this, 'add_tax_image_field' ) );
+				add_action( 'post_tag_edit_form_fields', array( $this, 'edit_tax_image_field' ) );
+				add_action( 'edited_post_tag', array( $this, 'save_tax_meta' ), 10, 2 );
+				add_action( 'create_post_tag', array( $this, 'save_tax_meta' ), 10, 2 );
+ 
+ 
+    } // __construct
+ 
+    /**
+     * 新建分类页面添加自定义字段输入框
+     */
+    public function add_tax_image_field(){
+    ?>
+        <div class="form-field">
+            <label for="term_meta[tax_keywords]">分类关键字</label>
+            <input type="text" name="term_meta[tax_keywords]" id="term_meta[tax_keywords]" value="" />
+            <p class="description">输入分类关键字</p>
+        </div>
+
+    <?php
+    } // add_tax_image_field
+ 
+    /**
+     * 编辑分类页面添加自定义字段输入框
+     *
+     * @uses get_option()       从option表中获取option数据
+     * @uses esc_url()          确保字符串是url
+     */
+    public function edit_tax_image_field( $term ){
+        
+        // $term_id 是当前分类的id
+        $term_id = $term->term_id;
+        
+        // 获取已保存的option
+        $term_meta = get_option( "ludou_taxonomy_$term_id" );
+        // option是一个二维数组
+        $keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : '';
+    ?>
+        <!-- <tr class="form-field">
+            <th scope="row">
+                <label for="term_meta[tax_image]">分类封面</label>
+                <td>
+                    <input type="text" name="term_meta[tax_image]" id="term_meta[tax_image]" value="<?php echo esc_url( $image ); ?>" />
+                    <p class="description">输入分类封面图片URL</p>
+                </td>
+            </th>
+        </tr> -->
+				<!-- /.form-field -->
+        
+        <!-- TODO: 在这里追加其他自定义字段表单，如： -->
+        
+        
+        <tr class="form-field">
+            <th scope="row">
+                <label for="term_meta[tax_keywords]">关键字</label>
+                <td>
+                    <input type="text" name="term_meta[tax_keywords]" id="term_meta[tax_keywords]" value="<?php echo $keywords; ?>" />
+                    <p class="description">输入关键字</p>
+                </td>
+            </th>
+        </tr>
+       
+        
+    <?php
+    } // edit_tax_image_field
+ 
+    /**
+     * 保存自定义字段的数据
+     *
+     * @uses get_option()      从option表中获取option数据
+     * @uses update_option()   更新option数据，如果没有就新建option
+     */
+    public function save_tax_meta( $term_id ){
+ 
+        if ( isset( $_POST['term_meta'] ) ) {
+            
+            // $term_id 是当前分类的id
+            $t_id = $term_id;
+            $term_meta = array();
+            
+            // 获取表单传过来的POST数据，POST数组一定要做过滤
+            $term_meta['tax_keywords'] = isset ( $_POST['term_meta']['tax_keywords'] ) ?  $_POST['term_meta']['tax_keywords'] : '';
+
+            // 保存option数组
+            update_option( "ludou_taxonomy_$t_id", $term_meta );
+ 
+        } // if isset( $_POST['term_meta'] )
+    } // save_tax_meta
+ 
+} // Ludou_Tax_Image
+ 
+$wptt_tax_image = new Add_Key_words();
+
+function get_current_tag_id() {
+	$current_tag = single_tag_title('', false);//获得当前TAG标签名称
+	$tags = get_tags();//获得所有TAG标签信息的数组
+	foreach($tags as $tag) {
+		if($tag->name == $current_tag) return $tag->term_id; //获得当前TAG标签ID，其中term_id就是tag ID
+	}
 }
