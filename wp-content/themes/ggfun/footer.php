@@ -5,7 +5,9 @@
         	<?php if( dopt('d_tqq_b') || dopt('d_weibo_b') || dopt('d_facebook_b') || dopt('d_twitter_b') ){ ?>
 
                 <?php if( dopt('d_tqq_b') ) echo '<a href="'.dopt('d_tqq').'" target="_blank">腾讯微博</a>'; ?>
-                <?php if( dopt('d_weibo_b') ) echo '<a href="'.dopt('d_weibo').'" target="_blank">新浪微博</a>'; ?>
+                <?php if( dopt('d_mail_b') ) echo '<a href="'.dopt('d_mail').'" target="_blank"><img src="'.dopt('d_mail_icon').'"></a>'; ?>
+                <?php if( dopt('d_qq_b') ) echo '<a href="'.dopt('d_qq').'" target="_blank"><img src="'.dopt('d_qq_icon').'"></a>'; ?>
+                <?php if( dopt('d_weibo_b') ) echo '<a href="'.dopt('d_weibo').'" target="_blank"><img src="'.dopt('d_weibo_icon').'"></a>'; ?>
                 <?php if( dopt('d_facebook_b') ) echo '<a href="'.dopt('d_facebook').'" target="_blank">Facebook</a>'; ?>
                 <?php if( dopt('d_twitter_b') ) echo '<a href="'.dopt('d_twitter').'" target="_blank">Twitter</a>'; ?>
             <?php } ?>

@@ -3,7 +3,7 @@
 $themename = $dname.'主题';
 
 $options = array(
-    "d_description", "d_keywords", "d_tui", "d_logo_w", "d_sticky_b", "d_sticky_count", "d_linkpage_cat", "d_tougao_b", "d_tougao_time", "d_tougao_mailto", "d_avatar_b", "d_avatarDate", "d_sideroll_b", "d_sideroll_1", "d_sideroll_2", "d_pingback_b", "d_autosave_b", "d_tqq_b", "d_tqq", "d_weibo_b", "d_weibo", "d_facebook_b", "d_facebook", "d_twitter_b", "d_twitter", "d_rss", "d_bdshare", "d_maillist_b", "d_maillist", "d_track_b", "d_track", "d_headcode_b", "d_headcode", "d_footcode_b", "d_footcode", "d_adsite_01_b", "d_adsite_01", "d_adindex_02_b", "d_adindex_02", "d_adindex_01_b", "d_adindex_01", "d_adindex_03_b", "d_adindex_03", "d_adpost_01_b", "d_adpost_01", "d_adpost_02_b", "d_adpost_02", "d_adpost_03_b", "d_adpost_03", "d_sign_b", "d_jquerybom_b", "d_ajaxpager_b", "d_thumbnail_b", "d_bdshare_b", "d_related_count", "d_post_views_b", "d_post_author_b", "d_post_comment_b", "d_post_time_b", "d_new_jdt", "d_new_link", "d_new_tab", "d_new_top", "d_new_read", "d_new_tlink"
+    "d_description", "d_keywords", "d_tui", "d_logo_w", "d_sticky_b", "d_sticky_count", "d_linkpage_cat", "d_tougao_b", "d_tougao_time", "d_tougao_mailto", "d_avatar_b", "d_avatarDate", "d_sideroll_b", "d_sideroll_1", "d_sideroll_2", "d_pingback_b", "d_autosave_b", "d_tqq_b", "d_tqq", "d_weibo_b", "d_weibo","d_weibo_icon","d_qq_b","d_qq","d_qq_icon","d_mail","d_mail_b","d_mail_icon", "d_facebook_b", "d_facebook", "d_twitter_b", "d_twitter", "d_rss", "d_bdshare", "d_maillist_b", "d_maillist", "d_track_b", "d_track", "d_headcode_b", "d_headcode", "d_footcode_b", "d_footcode", "d_adsite_01_b", "d_adsite_01", "d_adindex_02_b", "d_adindex_02", "d_adindex_01_b", "d_adindex_01", "d_adindex_03_b", "d_adindex_03", "d_adpost_01_b", "d_adpost_01", "d_adpost_02_b", "d_adpost_02", "d_adpost_03_b", "d_adpost_03", "d_sign_b", "d_jquerybom_b", "d_ajaxpager_b", "d_thumbnail_b", "d_bdshare_b", "d_related_count", "d_post_views_b", "d_post_author_b", "d_post_comment_b", "d_post_time_b", "d_new_jdt", "d_new_link", "d_new_tab", "d_new_top", "d_new_read", "d_new_tlink"
 );
 
 function mytheme_add_admin() {
@@ -224,6 +224,27 @@ function mytheme_admin() {
                 <input type="checkbox" id="d_weibo_b" name="d_weibo_b" <?php if(dopt('d_weibo_b')) echo 'checked="checked"' ?>>开启
             </label>
             网址：<input class="d_inp_short" name="d_weibo" id="d_weibo" type="text" value="<?php echo dopt('d_weibo'); ?>">
+            icon地址: <input class="d_inp_short" name="d_weibo_icon" id="d_weibo_icon" type="text" value="<?php echo dopt('d_weibo_icon'); ?>">
+        </td>
+    </tr>
+    <tr>
+        <td class="d_tit">qq</td>
+        <td>
+            <label class="checkbox inline">
+                <input type="checkbox" id="d_qq_b" name="d_qq_b" <?php if(dopt('d_qq_b')) echo 'checked="checked"' ?>>开启
+            </label>
+            网址：<input class="d_inp_short" name="d_qq" id="d_qq" type="text" value="<?php echo dopt('d_qq'); ?>">
+            icon地址: <input class="d_inp_short" name="d_qq_icon" id="d_qq_icon" type="text" value="<?php echo dopt('d_qq_icon'); ?>">
+        </td>
+    </tr>
+    <tr>
+        <td class="d_tit">邮箱</td>
+        <td>
+            <label class="checkbox inline">
+                <input type="checkbox" id="d_mail_b" name="d_mail_b" <?php if(dopt('d_mail_b')) echo 'checked="checked"' ?>>开启
+            </label>
+            网址：<input class="d_inp_short" name="d_mail" id="d_mail" type="text" value="<?php echo dopt('d_mail'); ?>">
+            icon地址: <input class="d_inp_short" name="d_mail_icon" id="d_mail_icon" type="text" value="<?php echo dopt('d_mail_icon'); ?>">
         </td>
     </tr>
     <tr>

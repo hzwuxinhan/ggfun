@@ -3,6 +3,7 @@
 	<div class="colA">
     	<div class="slide mb" id="tabA">
            <dl class="clearfix">
+           
             	<?php echo stripslashes(get_option( 'd_new_jdt'));?>
             </dl>
         </div>
@@ -32,13 +33,13 @@
         <div class="thA">
           <span class="sts s2">今日更新</span>
 
-          <i class="toc">【<?php echo $mdt[0];?>】</i>
-          <i class="toc">【<?php echo $mdt[1];?>】</i>
-          <i class="toc">【<?php echo $mdt[2];?>】</i>
-          <i class="toc">【<?php echo $mdt[3];?>】</i>
-          <i class="toc">【<?php echo $mdt[4];?>】</i>
-          <i class="toc">【<?php echo $mdt[5];?>】</i>
-          <i class="toc">【<?php echo $mdt[6];?>】</i>
+          <i class="toc"><?php echo $mdt[0];?></i>
+          <i class="toc"><?php echo $mdt[1];?></i>
+          <i class="toc"><?php echo $mdt[2];?></i>
+          <i class="toc"><?php echo $mdt[3];?></i>
+          <i class="toc"><?php echo $mdt[4];?></i>
+          <i class="toc"><?php echo $mdt[5];?></i>
+          <i class="toc"><?php echo $mdt[6];?></i>
           
           <span class="subMark s3"><a href="#">more</a></span>
         </div>
@@ -48,7 +49,7 @@
 
             <div class="lpic">
               <ul class="clearfix">
-                    <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[0] ),'caller_get_posts' => 1);
+                    <?php if (have_posts()):$args=array('showposts'=>'18','category__in' => array( $read[0] ),'caller_get_posts' => 1);
                     $my_query=new WP_Query($args);
                     while ($my_query->have_posts()) : $my_query->the_post(); 
                     $do_not_duplicate = $post->ID;
@@ -77,68 +78,7 @@
 
             <div class="lpic">
               <ul class="clearfix">
-                    <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[1] ),'caller_get_posts' => 1);
-                    $my_query=new WP_Query($args);
-                    while ($my_query->have_posts()) : $my_query->the_post(); 
-                    $do_not_duplicate = $post->ID;
-                    // print_r($posts);
-                    ?>
-                    <li class="focus">
-                      <a href="<?php the_permalink(); ?>" class="thumbnail" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>">
-                        <em class="cov"><em class="covs"></em></em>
-                        <?php deel_thumbnail(); ?>
-
-                        <i class="tit"><?php the_title(); ?></i>
-                        <i class="tim">
-                          <span class="tv"><?php deel_views(''); ?></span>
-                          <span class="tt"><?php the_time('Y-m-d');?></span>                  
-                        </i>
-                      </a>
-                    </li>
-                    <?php endwhile;endif; ?>
-              </ul>
-            </div>
-
-          </div>
-
-
-
-          <div class="toc-item">
-
-            <div class="lpic">
-              <ul class="clearfix">
-                    <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[2] ),'caller_get_posts' => 1);
-                    $my_query=new WP_Query($args);
-                    while ($my_query->have_posts()) : $my_query->the_post(); 
-                    $do_not_duplicate = $post->ID;
-                    // print_r($posts);
-                    ?>
-                    <li class="focus">
-                      <a href="<?php the_permalink(); ?>" class="thumbnail" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>">
-                        <em class="cov"><em class="covs"></em></em>
-                        <?php deel_thumbnail(); ?>
-
-                        <i class="tit"><?php the_title(); ?></i>
-                        <i class="tim">
-                          <span class="tv"><?php deel_views(''); ?></span>
-                          <span class="tt"><?php the_time('Y-m-d');?></span>                  
-                        </i>
-                      </a>
-                    </li>
-                    <?php endwhile;endif; ?>
-              </ul>
-            </div>
-
-          </div>
-
-
-
-
-          <div class="toc-item">
-
-            <div class="lpic">
-              <ul class="clearfix">
-                    <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[3] ),'caller_get_posts' => 1);
+                    <?php if (have_posts()):$args=array('showposts'=>'18','category__in' => array( $read[1] ),'caller_get_posts' => 1);
                     $my_query=new WP_Query($args);
                     while ($my_query->have_posts()) : $my_query->the_post(); 
                     $do_not_duplicate = $post->ID;
@@ -168,7 +108,38 @@
 
             <div class="lpic">
               <ul class="clearfix">
-                    <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[4] ),'caller_get_posts' => 1);
+                    <?php if (have_posts()):$args=array('showposts'=>'18','category__in' => array( $read[2] ),'caller_get_posts' => 1);
+                    $my_query=new WP_Query($args);
+                    while ($my_query->have_posts()) : $my_query->the_post(); 
+                    $do_not_duplicate = $post->ID;
+                    // print_r($posts);
+                    ?>
+                    <li class="focus">
+                      <a href="<?php the_permalink(); ?>" class="thumbnail" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>">
+                        <em class="cov"><em class="covs"></em></em>
+                        <?php deel_thumbnail(); ?>
+
+                        <i class="tit"><?php the_title(); ?></i>
+                        <i class="tim">
+                          <span class="tv"><?php deel_views(''); ?></span>
+                          <span class="tt"><?php the_time('Y-m-d');?></span>                  
+                        </i>
+                      </a>
+                    </li>
+                    <?php endwhile;endif; ?>
+              </ul>
+            </div>
+
+          </div>
+
+
+
+
+          <div class="toc-item">
+
+            <div class="lpic">
+              <ul class="clearfix">
+                    <?php if (have_posts()):$args=array('showposts'=>'18','category__in' => array( $read[3] ),'caller_get_posts' => 1);
                     $my_query=new WP_Query($args);
                     while ($my_query->have_posts()) : $my_query->the_post(); 
                     $do_not_duplicate = $post->ID;
@@ -198,7 +169,7 @@
 
             <div class="lpic">
               <ul class="clearfix">
-                    <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[5] ),'caller_get_posts' => 1);
+                    <?php if (have_posts()):$args=array('showposts'=>'18','category__in' => array( $read[4] ),'caller_get_posts' => 1);
                     $my_query=new WP_Query($args);
                     while ($my_query->have_posts()) : $my_query->the_post(); 
                     $do_not_duplicate = $post->ID;
@@ -228,7 +199,37 @@
 
             <div class="lpic">
               <ul class="clearfix">
-                    <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[6] ),'caller_get_posts' => 1);
+                    <?php if (have_posts()):$args=array('showposts'=>'18','category__in' => array( $read[5] ),'caller_get_posts' => 1);
+                    $my_query=new WP_Query($args);
+                    while ($my_query->have_posts()) : $my_query->the_post(); 
+                    $do_not_duplicate = $post->ID;
+                    // print_r($posts);
+                    ?>
+                    <li class="focus">
+                      <a href="<?php the_permalink(); ?>" class="thumbnail" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>">
+                        <em class="cov"><em class="covs"></em></em>
+                        <?php deel_thumbnail(); ?>
+
+                        <i class="tit"><?php the_title(); ?></i>
+                        <i class="tim">
+                          <span class="tv"><?php deel_views(''); ?></span>
+                          <span class="tt"><?php the_time('Y-m-d');?></span>                  
+                        </i>
+                      </a>
+                    </li>
+                    <?php endwhile;endif; ?>
+              </ul>
+            </div>
+
+          </div>
+
+
+
+          <div class="toc-item">
+
+            <div class="lpic">
+              <ul class="clearfix">
+                    <?php if (have_posts()):$args=array('showposts'=>'18','category__in' => array( $read[6] ),'caller_get_posts' => 1);
                     $my_query=new WP_Query($args);
                     while ($my_query->have_posts()) : $my_query->the_post(); 
                     $do_not_duplicate = $post->ID;
