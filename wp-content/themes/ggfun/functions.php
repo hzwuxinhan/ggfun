@@ -284,14 +284,16 @@ function deel_keywords() {
 		 $keywords = dopt('d_keywords');
   } elseif ( is_tag() )      {
 			$tagid = get_current_tag_id();
+			$yourtags = get_tag($tagid);
 			$term_meta = get_option( "ludou_taxonomy_$tagid" );
-			$keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : '';
+			$keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : $yourtags->name;
 		//  $keywords = single_tag_title('', false);
   } elseif ( is_category() ) {
-			$category_info = get_the_category();
-			$category_id = $category_info[0]->cat_ID;
+			global $wp_query;
+			$category_id = get_query_var('cat');
+			$yourcat = get_category($category_id);
 			$term_meta = get_option( "ludou_taxonomy_$category_id" );
-			$keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : '';
+			$keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : $yourcat->name;
   } elseif ( is_search() )   {
 		 $keywords = esc_html( $s, 1 );
   } else { $keywords = trim( wp_title('', false) );

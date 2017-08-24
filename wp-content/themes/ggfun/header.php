@@ -5,15 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <title><?php if(is_category()){
-		$category_info = get_the_category();
-		$category_id = $category_info[0]->cat_ID;
+		global $wp_query;
+		$category_id = get_query_var('cat');
+		$yourcat = get_category($category_id);
 		$term_meta = get_option( "ludou_taxonomy_$category_id" );
-		$title = $term_meta['tax_title'] ? $term_meta['tax_title'] : '';
+		$title = $term_meta['tax_title'] ? $term_meta['tax_title'] : $yourcat->name;
 		echo $title;
 	}elseif(is_tag()) {
 		$tagid = get_current_tag_id();
+		$yourtags = get_tag($tagid);
 		$term_meta = get_option( "ludou_taxonomy_$tagid" );
-		$title = $term_meta['tax_title'] ? $term_meta['tax_title'] : '';
+		$title = $term_meta['tax_title'] ? $term_meta['tax_title'] : $yourtags->name;
 		echo $title;
 	} else {
 		wp_title('-', true, 'right'); echo get_option('blogname'); if (is_home ()) echo get_option('blogdescription'); if ($paged > 1) echo '-Page ', $paged; 
