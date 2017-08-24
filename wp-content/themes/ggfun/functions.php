@@ -586,9 +586,14 @@ class Add_Key_words{
     public function add_tax_image_field(){
     ?>
         <div class="form-field">
-            <label for="term_meta[tax_keywords]">分类关键字</label>
+            <label for="term_meta[tax_keywords]">关键字</label>
             <input type="text" name="term_meta[tax_keywords]" id="term_meta[tax_keywords]" value="" />
-            <p class="description">输入分类关键字</p>
+            <p class="description">输入关键字</p>
+        </div>
+		<div class="form-field">
+            <label for="term_meta[tax_title]">标题</label>
+            <input type="text" name="term_meta[tax_title]" id="term_meta[tax_title]" value="" />
+            <p class="description">输入标题</p>
         </div>
 
     <?php
@@ -608,20 +613,9 @@ class Add_Key_words{
         // 获取已保存的option
         $term_meta = get_option( "ludou_taxonomy_$term_id" );
         // option是一个二维数组
-        $keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : '';
+		$keywords = $term_meta['tax_keywords'] ? $term_meta['tax_keywords'] : '';
+		$title = $term_meta['tax_title'] ? $term_meta['tax_title'] : '';
     ?>
-        <!-- <tr class="form-field">
-            <th scope="row">
-                <label for="term_meta[tax_image]">分类封面</label>
-                <td>
-                    <input type="text" name="term_meta[tax_image]" id="term_meta[tax_image]" value="<?php echo esc_url( $image ); ?>" />
-                    <p class="description">输入分类封面图片URL</p>
-                </td>
-            </th>
-        </tr> -->
-				<!-- /.form-field -->
-        
-        <!-- TODO: 在这里追加其他自定义字段表单，如： -->
         
         
         <tr class="form-field">
@@ -630,6 +624,15 @@ class Add_Key_words{
                 <td>
                     <input type="text" name="term_meta[tax_keywords]" id="term_meta[tax_keywords]" value="<?php echo $keywords; ?>" />
                     <p class="description">输入关键字</p>
+                </td>
+            </th>
+        </tr>
+		<tr class="form-field">
+            <th scope="row">
+                <label for="term_meta[tax_title]">标题</label>
+                <td>
+                    <input type="text" name="term_meta[tax_title]" id="term_meta[tax_title]" value="<?php echo $title; ?>" />
+                    <p class="description">输入标题</p>
                 </td>
             </th>
         </tr>
@@ -653,7 +656,8 @@ class Add_Key_words{
             $term_meta = array();
             
             // 获取表单传过来的POST数据，POST数组一定要做过滤
-            $term_meta['tax_keywords'] = isset ( $_POST['term_meta']['tax_keywords'] ) ?  $_POST['term_meta']['tax_keywords'] : '';
+			$term_meta['tax_keywords'] = isset ( $_POST['term_meta']['tax_keywords'] ) ?  $_POST['term_meta']['tax_keywords'] : '';
+			$term_meta['tax_title'] = isset ( $_POST['term_meta']['tax_title'] ) ?  $_POST['term_meta']['tax_title'] : '';
 
             // 保存option数组
             update_option( "ludou_taxonomy_$t_id", $term_meta );
