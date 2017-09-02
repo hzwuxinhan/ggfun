@@ -202,7 +202,7 @@ add_action('wp_head', 'deel_record_visitors');
 function deel_views($after=''){
   global $post;
   $post_ID = $post->ID;
-  $views = (int)get_post_meta($post_ID, 'views', true);
+  $views = (int)get_post_meta($post_ID, 'post_views_count', true);
   echo $views, $after;
 }
 endif;
@@ -675,5 +675,37 @@ function get_current_tag_id() {
 	$tags = get_tags();//获得所有TAG标签信息的数组
 	foreach($tags as $tag) {
 		if($tag->name == $current_tag) return $tag->term_id; //获得当前TAG标签ID，其中term_id就是tag ID
+	}
+}
+
+function setPostViews($postID) {
+	$count_key = 'post_views_count';
+	$currentDay_key = 'view_day';
+	$currentDay = get_post_meta($postID,$currentDay_key,true);
+	$count = get_post_meta($postID, $count_key, true);
+	$currentTime = date('Ymd', time());
+	if($currentDay == $currentTime) {
+		if($count == ''){
+			$count = 1;
+			delete_post_meta($postID, $count_key);
+			add_post_meta($postID, $count_key, $count);
+		}else {
+			$count++;
+		    update_post_meta($postID, $count_key, $count);
+		}
+	}else {
+		if($currentDay == '') {
+			$currentDay = $currentTime;
+			$count = 1;
+			delete_post_meta($postID, $count_key);
+			delete_post_meta($postID, $currentDay_key);
+			add_post_meta($postID, $count_key, $count);
+			add_post_meta($postID, $currentDay_key, $currentDay);
+		}else {
+			$currentDay = $currentTime;
+			$count = 1;
+			update_post_meta($postID, $count_key, $count);
+			update_post_meta($postID, $currentDay_key, $currentDay);
+		}
 	}
 }

@@ -26,19 +26,39 @@
 
 if (is_single()){?>
 
-    <div class="modA sbkk">
-        <div class="thA">
-            <span class="mark s1">随便看看 ^-^</span>
-            <span class="subMark"><?php echo date('Y年m月d日', time());?></span>   
-        </div>
-        <div class="tbA">
-            <ul class="pxb">
-              <?php if (have_posts()):$args=array('showposts'=>'10','caller_get_posts' => 1, 'orderby' => 'meta_value', 'meta_key' => 'views', 'order' => 'desc' );$my_query=new WP_Query($args);$i=1;while ($my_query->have_posts()) : $my_query->the_post(); $do_not_duplicate = $post->ID;$ii='';if($i<10){$ii = '0'.$i;}else{$ii = $i;}?>
-              <li><em class="view"><?php deel_views(''); ?></em> <a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></li>
-              <?php $i++;endwhile;endif; ?>
-            </ul>
-        </div>
-    </div>
+<div class="modA sbkk">
+<div class="thA">
+  <span class="mark s1">点击排行榜 ^-^</span>
+  <span class="subMark"><?php echo date('Y年m月d日', time());?></span>	
+</div>
+<div class="tbA">
+  <ul class="pxb">
+      <?php if (have_posts()):
+      $meta_query=array(
+          array(
+            'key' => 'view_day',
+            'value' => date('Ymd', time()),
+          )
+      );
+      $args=array('meta_query'=>$meta_query,'showposts'=>'10','caller_get_posts' => 1, 'orderby' => 'meta_value_num','meta_key'=>'post_views_count','order' => 'desc' );
+      $my_query=new WP_Query($args);
+      $i=1;
+      while ($my_query->have_posts()) : $my_query->the_post();
+        $do_not_duplicate = $post->ID;
+        $ii='';
+        if($i<10){
+          $ii = '0'.$i;
+          }else{
+            $ii = $i;
+      }
+      ?>
+      <li>
+        <em class="view"><?php deel_views(''); ?></em> 
+        <a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></li>
+      <?php $i++;endwhile;endif; ?>
+    </ul>
+</div>
+</div>
 
 <?php
     if (function_exists('dynamic_sidebar') && dynamic_sidebar('widget_postsidebar')) : endif; 

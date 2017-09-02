@@ -1,8 +1,11 @@
 <?php get_header(); ?>
+
 <div class="article">
 <div class="content-wrap">
 	<div class="content">
-		
+		<?php echo get_the_ID(); ?>
+		<?php setPostViews(get_the_ID()); ?>
+
 		<?php while (have_posts()) : the_post(); ?>
 		
         <?php
