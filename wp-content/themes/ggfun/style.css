@@ -5747,7 +5747,7 @@ body {
     color: #ccc;
 }
 .lpic .focus i a:hover {
-    color: #333;
+    color: #fff;
     text-shadow: 0px 0px 2px #999;
 }
 .lpic .focus a .cov {
@@ -5778,7 +5778,7 @@ body {
     -o-filter: blur(5px);
     -ms-filter: blur(5px);
     filter: blur(5px);
-    border-radius: 10px;
+    border-radius: 30px;
     overflow: hidden;
 }
 .lpic .focus a:hover .tim {

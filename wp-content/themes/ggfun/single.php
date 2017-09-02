@@ -53,9 +53,10 @@
 		</div>
 
 		<footer class="article-footer">
-			<?php the_tags('<div class="article-tags">所属专辑： ','',' </div>'); ?>
+			文章标签:
+			<?php the_tags('<div class="article-tags">','',' </div>'); ?>
 			
-				<?php the_category('',''); ?>
+			<?php the_category('',''); ?>
 		</footer>
 
         <div class="modA mb" id="tabB">
