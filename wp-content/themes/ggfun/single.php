@@ -3,7 +3,6 @@
 <div class="article">
 <div class="content-wrap">
 	<div class="content">
-		<?php echo get_the_ID(); ?>
 		<?php setPostViews(get_the_ID()); ?>
 
 		<?php while (have_posts()) : the_post(); ?>
@@ -81,4 +80,5 @@
 <script src="http://js.3conline.com/min/temp/v2/core-pc_v1,dpl-tab_v2.js"></script>
 <script>
 new pc.tab({target:pc.getElems('#tabB .tcon'),control:pc.getElems('#tabB .thA i')});
+
 </script>

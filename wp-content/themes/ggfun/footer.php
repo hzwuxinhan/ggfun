@@ -44,4 +44,12 @@ $('.upd').live('click',function(){
     
     
 })
+
+<?php 
+	if(is_category()) {
+        ?>
+        $(".navbar .nav").html($(".navbar .nav").html().replace(/1/,""))
+        <?php
+	}
+?>
 </script>

@@ -15,7 +15,7 @@
     	<div class="modA sbkk">
         <div class="thA">
           <span class="mark s1">点击排行榜 ^-^</span>
-          <span class="subMark"><?php echo date('Y年m月d日', time());?></span>	
+          <span class="subMark"><?php date_default_timezone_set('PRC');echo date('Y年m月d日', time());?></span>	
         </div>
         <div class="tbA">
           <ul class="pxb">
@@ -278,6 +278,5 @@ for(var i=0;i< <?php echo sizeof($mdt) ?>;i++) {
   })(i)
   
 }
-
 
 </script>

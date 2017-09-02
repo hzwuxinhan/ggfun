@@ -683,6 +683,7 @@ function setPostViews($postID) {
 	$currentDay_key = 'view_day';
 	$currentDay = get_post_meta($postID,$currentDay_key,true);
 	$count = get_post_meta($postID, $count_key, true);
+	date_default_timezone_set('PRC');
 	$currentTime = date('Ymd', time());
 	if($currentDay == $currentTime) {
 		if($count == ''){

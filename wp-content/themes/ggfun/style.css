@@ -2491,7 +2491,7 @@ input[type='submit'].btn.btn-mini {
 .nav > li > a:hover,
 .nav > li > a:focus {
     text-decoration: none;
-    background-color: #eeeeee;
+    background-color: rgb(39,39,39);
 }
 .nav > li > a > img {
     max-width: none;
@@ -2840,24 +2840,25 @@ input[type='submit'].btn.btn-mini {
 }
 .navbar .nav {
     position: relative;
-    left: 0;
     display: block;
-    float: left;
-    margin: 0 10px 0 0;
     font-size: 14px;
+    width:297px;
+    height:70px;
+    overflow:hidden;
 }
 .navbar .nav.pull-right {
     float: right;
     margin-right: 0;
 }
+
 .navbar .nav > li {
     position: relative;
-    float: left;
-    margin-right: 1px;
+    float: right;
 }
 .navbar .nav li a {
     padding: 16px 20px;
-    color: #eeeeee;
+    font-size:12px;
+    color: #fff;
 }
 .navbar .nav .dropdown-toggle .caret {
     margin-top: 8px;
@@ -2865,7 +2866,7 @@ input[type='submit'].btn.btn-mini {
 .navbar .nav li a:focus,
 .navbar .nav li a:hover {
     text-shadow: 0px 0px 2px #999;
-    color: #333;
+    color: #fff;
 }
 .navbar .nav .active a,
 .navbar .nav .active a:hover,
@@ -2876,11 +2877,6 @@ input[type='submit'].btn.btn-mini {
 .navbar .nav li.current-menu-item a,
 .navbar .nav li.current-menu-parent a,
 .navbar .nav li.current_page_item a,
-.navbar .nav li.current-post-ancestor a {
-    color: #333;
-    position: relative;
-    z-index: 2;
-}
 .navbar .nav li:hover > ul {
     display: block;
 }
@@ -2926,12 +2922,8 @@ input[type='submit'].btn.btn-mini {
 .navbar .nav li li.current-menu-item a {
     background-color: #428bca;
 }
-.navbar .nav li:hover a,
-.navbar .nav li.current-menu-item a,
-.navbar .nav li.current-menu-parent a,
-.navbar .nav li.current_page_item a,
-.navbar .nav li.current-post-ancestor a,
-.navbar .nav li ul {
+.navbar .nav li:hover {
+    background-color: rgba(39,39,39,255) !important;
 }
 
 .navbar .btn-navbar {
@@ -5529,11 +5521,11 @@ pre.prettyprint.linenums ol li {
     float: right;
 }
 .navbar .nav li {
-    line-height: 40px;
+    line-height: 70px;
+    border-left: 1px solid #242525;
 }
 .navbar .nav li a {
     padding: 0 20px;
-    color: #ccc;
 }
 body {
     background: #212121;
@@ -6506,7 +6498,7 @@ body #SOHUCS {
     .navbar .nav li.current-post-ancestor a,
     .navbar .nav li ul {
         background-color: #eee;
-        color: #444;
+        color: #fff;
         display: block;
     }
     .screen-search {
