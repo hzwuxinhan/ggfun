@@ -1,6 +1,10 @@
 <?php get_header(); get_sidebar(); ?>
 <div class="cat-content-wrap">
 	<div class="cat-content">
+		
+		<?php 
+			echo stripslashes(get_option('d_channel_code'));
+		?>
 		<div class="modA">
 			<div class="thA"><span class="s2"><a href="<?php echo get_category_link( get_cat_ID( single_cat_title('',false) ) ); ?>"><?php single_cat_title() ?></a></span></div>
 

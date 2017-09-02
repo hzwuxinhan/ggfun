@@ -25,7 +25,7 @@
 	        </div>
 	        <?php */ ?>
 			<div class="vvedio"><?php echo $bfy; ?></div>
-		<?php the_content(); ?>
+		
 		</article>
                 
 
@@ -40,6 +40,7 @@
 				<time class="muted"><i class="ico icon-time icon12"></i> <?php echo timeago( get_gmt_from_date(get_the_time('Y-m-d G:i:s')) )?></time>
 				<span class="muted"><i class="ico icon-eye-open icon12"></i> <?php deel_views('浏览'); ?></span>
 				<?php if ( comments_open() ) echo '<span class="muted"><i class="icon-comment icon12"></i> <a href="'.get_comments_link().'">'.get_comments_number('去', '1', '%').'评论</a></span>'; ?>
+				<?php deel_share(); ?>
 			</div>
 
 
@@ -51,9 +52,9 @@
 
 		<footer class="article-footer">
 			<?php the_tags('<div class="article-tags">所属专辑： ','',' </div>'); ?>
-			<?php deel_share(); ?>
+			
+				<?php the_category('',''); ?>
 		</footer>
-
 
         <div class="modA mb" id="tabB">
             <?php echo stripslashes(get_option( 'd_new_tab'));?>

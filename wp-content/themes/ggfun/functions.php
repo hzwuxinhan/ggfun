@@ -129,7 +129,7 @@ function deel_breadcrumbs(){
     $categorys = get_the_category();
     $category = $categorys[0];
     
-    return '你的位置：<a href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a> <small>></small> '.get_category_parents($category->term_id, true, ' <small>></small> ').'<span class="muted">'.get_the_title().'</span>';
+    return '你的位置：<a href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a> <small>></small> '.get_category_parents($category->term_id, true, ' <small>></small> ');
 }
 
 // 取消原有jQuery
@@ -236,8 +236,7 @@ add_action('login_head', 'custom_login');   */
 
 $dHasShare = false;
 function deel_share(){
-	if( !dopt('d_bdshare_b') ) return false;
-  echo '<div class="share"><div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><span class="share-tit">分享此文到：</span><a class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_tsina"></a><a class="bds_sqq"></a><a class="bds_tqf"></a><a class="bds_renren"></a><a class="bds_mshare"></a><a class="bds_youdao"></a><a class="bds_mail"></a><span class="bds_more"></span><a class="shareCount"></a></div></div>';
+  echo '<div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>';
   global $dHasShare;
   $dHasShare = true;
 }
@@ -428,7 +427,7 @@ function deel_copyright($content) {
 		if( $show ){
 			$content.= '<p>来源：'.$show.'</p>';
 		}
-		$content.= '<p>转载请注明：<a href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a> &raquo; <a href="'.get_permalink().'">'.get_the_title().'</a></p>';
+		// $content.= '<p>转载请注明：<a href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a> &raquo; <a href="'.get_permalink().'">'.get_the_title().'</a></p>';
 	}
 	return $content;
 }

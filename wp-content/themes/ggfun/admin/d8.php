@@ -3,7 +3,7 @@
 $themename = $dname.'主题';
 
 $options = array(
-    "d_description", "d_keywords", "d_tui", "d_logo_w", "d_sticky_b", "d_sticky_count", "d_linkpage_cat", "d_tougao_b", "d_tougao_time", "d_tougao_mailto", "d_avatar_b", "d_avatarDate", "d_sideroll_b", "d_sideroll_1", "d_sideroll_2", "d_pingback_b", "d_autosave_b", "d_tqq_b", "d_tqq", "d_weibo_b", "d_weibo","d_weibo_icon","d_qq_b","d_qq","d_qq_icon","d_mail","d_mail_b","d_mail_icon", "d_facebook_b", "d_facebook", "d_twitter_b", "d_twitter", "d_rss", "d_bdshare", "d_maillist_b", "d_maillist", "d_track_b", "d_track", "d_headcode_b", "d_headcode", "d_footcode_b", "d_footcode", "d_adsite_01_b", "d_adsite_01", "d_adindex_02_b", "d_adindex_02", "d_adindex_01_b", "d_adindex_01", "d_adindex_03_b", "d_adindex_03", "d_adpost_01_b", "d_adpost_01", "d_adpost_02_b", "d_adpost_02", "d_adpost_03_b", "d_adpost_03", "d_sign_b", "d_jquerybom_b", "d_ajaxpager_b", "d_thumbnail_b", "d_bdshare_b", "d_related_count", "d_post_views_b", "d_post_author_b", "d_post_comment_b", "d_post_time_b", "d_new_jdt", "d_new_link", "d_new_tab", "d_new_top", "d_new_read", "d_new_tlink"
+    "d_description", "d_keywords", "d_tui", "d_logo_w", "d_sticky_b", "d_sticky_count", "d_linkpage_cat", "d_tougao_b", "d_tougao_time", "d_tougao_mailto", "d_avatar_b", "d_avatarDate", "d_sideroll_b", "d_sideroll_1", "d_sideroll_2", "d_pingback_b", "d_autosave_b", "d_tqq_b", "d_tqq", "d_weibo_b", "d_weibo","d_weibo_icon","d_qq_b","d_qq","d_qq_icon","d_mail","d_mail_b","d_mail_icon", "d_facebook_b", "d_facebook", "d_twitter_b", "d_twitter", "d_rss", "d_bdshare", "d_maillist_b", "d_maillist", "d_track_b", "d_track", "d_headcode_b", "d_headcode", "d_footcode_b", "d_footcode", "d_adsite_01_b", "d_adsite_01", "d_adindex_02_b", "d_adindex_02", "d_adindex_01_b", "d_adindex_01", "d_adindex_03_b", "d_adindex_03", "d_adpost_01_b", "d_adpost_01", "d_adpost_02_b", "d_adpost_02", "d_adpost_03_b", "d_adpost_03", "d_sign_b", "d_jquerybom_b", "d_ajaxpager_b", "d_thumbnail_b", "d_bdshare_b", "d_related_count", "d_post_views_b", "d_post_author_b", "d_post_comment_b", "d_post_time_b", "d_new_jdt","d_channel_code", "d_new_link", "d_new_tab", "d_new_top", "d_new_read", "d_new_tlink"
 );
 
 function mytheme_add_admin() {
@@ -387,7 +387,12 @@ function mytheme_admin() {
             <textarea name="d_adpost_03" id="d_adpost_03" type="textarea" rows=""><?php echo dopt('d_adpost_03'); ?></textarea>
         </td>
     </tr>
-
+    <tr>
+        <td class="d_tit">栏目自定义代码</td>
+        <td>
+            <textarea name="d_channel_code" id="d_channel_code" type="textarea" rows="" style="height:300px"><?php echo dopt('d_channel_code'); ?></textarea>
+        </td>
+    </tr>
     <tr>
         <td class="d_tit">首页焦点图代码</td>
         <td>
@@ -401,13 +406,13 @@ function mytheme_admin() {
         </td>
     </tr>
     <tr>
-        <td class="d_tit">首页7大块链(中间用|||分开)接</td>
+        <td class="d_tit">首页7大块(大版块用-----分割,tab用|||分开)</td>
         <td>
             <textarea name="d_new_top" id="d_new_top" type="textarea" rows="" style="height:600px"><?php echo dopt('d_new_top'); ?></textarea>
         </td>
     </tr>
     <tr>
-        <td class="d_tit">首页7大块读取id(不同块间用|分开，每一块可以读取多个栏目id)</td>
+        <td class="d_tit">首页7大块读取id(大版块用-----分割,tab用|||分开)</td>
         <td>
             <textarea name="d_new_read" id="d_new_read" type="textarea" rows=""><?php echo dopt('d_new_read'); ?></textarea>
         </td>

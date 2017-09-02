@@ -1,7 +1,7 @@
 <?php get_header();$mdt = stripslashes(get_option('d_new_top'));$mdt = explode('-----',$mdt);$read = stripslashes(get_option('d_new_read'));$read = explode('-----',$read);?>
 <div class="p1 con mb clearfix">
 	<div class="colA">
-    	<div class="slide mb" id="tabA">
+    	<div class="slide mb slider-pic" id="tabA">
            <dl class="clearfix">
            
             	<?php echo stripslashes(get_option( 'd_new_jdt'));?>
@@ -22,7 +22,7 @@
                   <?php if (have_posts()):
                   $date_query=array(
                       array(
-                        'column' => 'post_date',
+                        'column' => 'post_date_gmt',
                         'before' => date('Y-m-d H:i',time()),
                         'after' =>date('Y-m-d H:i',time()-3600*24*30)
                       )
@@ -43,7 +43,6 @@
     ?>
       <div class="modA" id="tdsup<?php echo $mdtindex; ?>">
         <div class="thA">
-          <span class="sts s2">今日更新</span>
           <?php
               foreach($submdt as $submdtindex => $onesubmdt ) {
           ?>
@@ -51,7 +50,7 @@
           <?php
               }
           ?>
-          <span class="subMark s3"><a href="#">more</a></span>
+          <span class="subMark s3"><span class="ico"></span><a href="#">more</a></span>
         </div>
         <div class="tbA">
           <?php 
@@ -237,10 +236,10 @@
 <script>
 
 new Slide({
-    target: $('#tabA dd a'),
+    target: $('#tabA dd div'),
     control: $('#tabA dt a'),
     effect: 'slide',
-    autoPlay: true,
+    autoPlay: false,
     onchange: function() {
         
     }

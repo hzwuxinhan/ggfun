@@ -58,7 +58,6 @@ if (is_single()){?>
 	// 		echo '</div>';
 	// 	echo '</div>';
 	// }
-    
 	if (function_exists('dynamic_sidebar') && dynamic_sidebar('widget_othersidebar')) : endif; 
 }else {
 	if (function_exists('dynamic_sidebar') && dynamic_sidebar('widget_othersidebar')) : endif; 
