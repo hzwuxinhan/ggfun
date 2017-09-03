@@ -16,6 +16,16 @@
         <div class="trackcode pull-right">
             <?php if( dopt('d_track_b') ) echo dopt('d_track'); ?>
         </div>
+        <div class="friend_link">
+            <div class="fd_name">友情链接</div>
+            <div class="friend_box">
+                <div class="youlian">
+                        <?php   echo dopt('d_new_link');
+                        ?>
+                </div>
+            </div>
+            
+        </div>
     </div>
 </footer>
 <?php 
@@ -30,21 +40,6 @@ if( dopt('d_footcode_b') ) echo dopt('d_footcode');
 </html>
 <script src="http://js.3conline.com/min/temp/v1/lib-jquery1.4.2.js"></script>
 <script>
-$('.upd').live('click',function(){
-    var fd = $(this).parent().next();
-    if($(this).hasClass('upds')){
-        $(this).removeClass('upds');
-        $(this).html('收起');
-        fd.show();
-    }else{
-        $(this).addClass('upds');
-        $(this).html('展开');
-        fd.hide();
-    }
-    
-    
-})
-
 <?php 
 	if(is_category()) {
         ?>

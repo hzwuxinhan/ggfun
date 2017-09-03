@@ -251,7 +251,7 @@ new Slide({
     target: $('#tabA dd div'),
     control: $('#tabA dt a'),
     effect: 'slide',
-    autoPlay: false,
+    autoPlay: true,
     onchange: function() {
         
     }

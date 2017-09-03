@@ -5536,6 +5536,7 @@ body {
     margin: 0 auto;
     border: 0;
     background: none;
+    position: relative;
 }
 .content {
     margin: 0;
@@ -5677,7 +5678,38 @@ body {
     font-size: 12px;
     margin-bottom: 10px;
 }
-
+.friend_link {
+    float:right;
+    margin-top:5px;
+}
+.friend_link .friend_box {
+    display:none;
+    position: absolute;
+    bottom: 76px;
+    right: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+    background-color: #000;
+    text-align:right;
+}
+.friend_link .youlian {
+    margin-right: -35px !important;    
+}
+.friend_link .fd_name {
+    line-height: 73px;
+    right: 0;
+    width: 110px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+}
+.friend_link:hover .fd_name{
+    background-color:#000;
+}
+.friend_link:hover .friend_box{
+    display:block;
+}
 .glist {
     line-height: 20px;
 }
