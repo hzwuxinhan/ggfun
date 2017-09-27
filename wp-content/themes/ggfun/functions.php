@@ -199,12 +199,19 @@ function deel_record_visitors(){
 }
 add_action('wp_head', 'deel_record_visitors');  
 
-function deel_views($after=''){
+function deel_views_true($after=''){
   global $post;
   $post_ID = $post->ID;
   $views = (int)get_post_meta($post_ID, 'post_views_count', true);
   echo $views, $after;
 }
+
+function deel_views($after=''){
+	global $post;
+	$post_ID = $post->ID;
+	$views = (int)get_post_meta($post_ID, 'views', true);
+	echo $views, $after;
+  }
 endif;
 
 if ( ! function_exists( 'deel_thumbnail' ) ) :

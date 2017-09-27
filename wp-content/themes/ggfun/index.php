@@ -39,7 +39,7 @@
               }
               ?>
               <li>
-                <em class="view"><?php deel_views(''); ?></em> 
+                <em class="view"><?php deel_views_true(''); ?></em> 
                 <a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></li>
               <?php $i++;endwhile;endif; ?>
             </ul>
@@ -111,132 +111,6 @@
     
 </div>
 
-<?php /* ?>
-
-<div class="p2 con conA mb clearfix">
-    <div class="modA">
-        <div class="thA"><?php echo $mdt[1];?></div>
-        <div class="tbA">
-            <div class="lpic">
-            <ul class="clearfix">
-                  <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[1] ),'caller_get_posts' => 1);$my_query=new WP_Query($args);while ($my_query->have_posts()) : $my_query->the_post(); $do_not_duplicate = $post->ID;?>
-                  <li class="focus">
-                    <a href="<?php the_permalink(); ?>" class="thumbnail"><?php deel_thumbnail(); ?></a>
-                    <i><a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></i>
-                    <i>播放：<?php deel_views(''); ?>&nbsp;&nbsp;<?php if( !$_comment ){ ?>评论：<?php if ( comments_open() ) echo '<a href="'.get_comments_link().'">'.get_comments_number('0', '1', '%').'评论</a>';?><?php } ?></i>
-                  </li>
-                  <?php endwhile;endif; ?>
-            </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="p2 con conA mb clearfix">
-    <div class="modA">
-        <div class="thA"><?php echo $mdt[2];?></div>
-        <div class="tbA">
-            <div class="lpic">
-            <ul class="clearfix">
-                  <?php if (have_posts()):$args=array('showposts'=>'6','category__in' => array( $read[2] ),'caller_get_posts' => 1);$my_query=new WP_Query($args);while ($my_query->have_posts()) : $my_query->the_post(); $do_not_duplicate = $post->ID;?>
-                  <li class="focus">
-                    <a href="<?php the_permalink(); ?>" class="thumbnail"><?php deel_thumbnail(); ?></a>
-                    <i><a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></i>
-                    <i>播放：<?php deel_views(''); ?>&nbsp;&nbsp;<?php if( !$_comment ){ ?>评论：<?php if ( comments_open() ) echo '<a href="'.get_comments_link().'">'.get_comments_number('0', '1', '%').'评论</a>';?><?php } ?></i>
-                  </li>
-                  <?php endwhile;endif; ?>
-            </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="p2 con conA mb clearfix">
-    <div class="modA">
-        <div class="thA"><?php echo $mdt[3];?></div>
-        <div class="tbA">
-            <div class="lpic">
-            <ul class="clearfix">
-                  <?php if (have_posts()):$args=array('showposts'=>'6','category__in' => array( $read[3] ),'caller_get_posts' => 1);$my_query=new WP_Query($args);while ($my_query->have_posts()) : $my_query->the_post(); $do_not_duplicate = $post->ID;?>
-                  <li class="focus">
-                    <a href="<?php the_permalink(); ?>" class="thumbnail"><?php deel_thumbnail(); ?></a>
-                    <i><a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></i>
-                    <i>播放：<?php deel_views(''); ?>&nbsp;&nbsp;<?php if( !$_comment ){ ?>评论：<?php if ( comments_open() ) echo '<a href="'.get_comments_link().'">'.get_comments_number('0', '1', '%').'评论</a>';?><?php } ?></i>
-                  </li>
-                  <?php endwhile;endif; ?>
-            </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="p2 con conA mb clearfix">
-    <div class="modA">
-        <div class="thA"><?php echo $mdt[4];?></div>
-        <div class="tbA">
-            <div class="lpic">
-            <ul class="clearfix">
-                  <?php if (have_posts()):$args=array('showposts'=>'24','category__in' => array( $read[4] ),'caller_get_posts' => 1);$my_query=new WP_Query($args);while ($my_query->have_posts()) : $my_query->the_post(); $do_not_duplicate = $post->ID;?>
-                  <li class="focus">
-                    <a href="<?php the_permalink(); ?>" class="thumbnail"><?php deel_thumbnail(); ?></a>
-                    <i><a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></i>
-                    <i>播放：<?php deel_views(''); ?>&nbsp;&nbsp;<?php if( !$_comment ){ ?>评论：<?php if ( comments_open() ) echo '<a href="'.get_comments_link().'">'.get_comments_number('0', '1', '%').'评论</a>';?><?php } ?></i>
-                  </li>
-                  <?php endwhile;endif; ?>
-            </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="p2 con conA mb clearfix">
-    <div class="modA">
-        <div class="thA"><?php echo $mdt[5];?></div>
-        <div class="tbA">
-            <div class="lpic">
-            <ul class="clearfix">
-                  <?php if (have_posts()):$args=array('showposts'=>'6','category__in' => array( $read[5] ),'caller_get_posts' => 1);$my_query=new WP_Query($args);while ($my_query->have_posts()) : $my_query->the_post(); $do_not_duplicate = $post->ID;?>
-                  <li class="focus">
-                    <a href="<?php the_permalink(); ?>" class="thumbnail"><?php deel_thumbnail(); ?></a>
-                    <i><a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></i>
-                    <i>播放：<?php deel_views(''); ?>&nbsp;&nbsp;<?php if( !$_comment ){ ?>评论：<?php if ( comments_open() ) echo '<a href="'.get_comments_link().'">'.get_comments_number('0', '1', '%').'评论</a>';?><?php } ?></i>
-                  </li>
-                  <?php endwhile;endif; ?>
-            </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="p2 con conA mb clearfix">
-    <div class="modA">
-        <div class="thA"><?php echo $mdt[6];?></div>
-        <div class="tbA">
-            <div class="lpic">
-            <ul class="clearfix">
-                  <?php if (have_posts()):$args=array('showposts'=>'6','category__in' => array( $read[6] ),'caller_get_posts' => 1);$my_query=new WP_Query($args);while ($my_query->have_posts()) : $my_query->the_post(); $do_not_duplicate = $post->ID;?>
-                  <li class="focus">
-                    <a href="<?php the_permalink(); ?>" class="thumbnail"><?php deel_thumbnail(); ?></a>
-                    <i><a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></i>
-                    <i>播放：<?php deel_views(''); ?>&nbsp;&nbsp;<?php if( !$_comment ){ ?>评论：<?php if ( comments_open() ) echo '<a href="'.get_comments_link().'">'.get_comments_number('0', '1', '%').'评论</a>';?><?php } ?></i>
-                  </li>
-                  <?php endwhile;endif; ?>
-            </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="p6 con clearfix">
-	<div class="pd">
-	<strong>友情链接</strong>
-    <?php echo stripslashes(get_option( 'd_new_link'));?>
-	</div>
-</div>
-<?php
-*/
-?>
 
 <div style="display: block;" class="rollto"><button class="btn btn-inverse" data-type="totop" title="回顶部"><i class="icon-eject icon-white"></i></button></div>
 

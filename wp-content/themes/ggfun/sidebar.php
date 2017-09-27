@@ -53,7 +53,7 @@ if (is_single()){?>
       }
       ?>
       <li>
-        <em class="view"><?php deel_views(''); ?></em> 
+        <em class="view"><?php deel_views_true(''); ?></em> 
         <a href="<?php the_permalink() ?>" title="<?php the_title(); ?> - <?php bloginfo('name'); ?>"><?php the_title(); ?></a></li>
       <?php $i++;endwhile;endif; ?>
     </ul>
