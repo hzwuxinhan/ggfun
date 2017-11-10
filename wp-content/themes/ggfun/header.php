@@ -118,7 +118,7 @@ if( dopt('d_headcode_b') ) echo dopt('d_headcode'); ?>
 		}
 		</script>
         <ul class="nav">
-			<?php echo str_replace("</ul></div>", "", ereg_replace("<div[^>]*><ul[^>]*>", "", wp_nav_menu(array('theme_location' => 'nav', 'echo' => false)) )); ?>
+			<?php echo str_replace("</ul></div>", "", preg_replace("~<div[^>]*><ul[^>]*>~", "", wp_nav_menu(array('theme_location' => 'nav', 'echo' => false)) )); ?>
 		</ul>
         
 	</div>
